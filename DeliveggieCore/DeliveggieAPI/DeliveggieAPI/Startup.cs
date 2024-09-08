@@ -1,4 +1,5 @@
 using DeliveggieAPI.Models;
+using DeliveggieAPI.Repository;
 using DeliveggieAPI.Services;
 using EasyNetQ;
 using Microsoft.AspNetCore.Builder;
@@ -28,6 +29,7 @@ namespace DeliveggieAPI
             services.AddSingleton<IDeliveggieDBSettings>(sp => sp.GetRequiredService<IOptions<DeliveggieDBSettings>>().Value);
             services.AddSingleton<IMongoClient>(c => new MongoClient(Configuration.GetValue<string>("DeliveggieDBSettings:ConnectionString")));
             //services.AddSingleton(RabbitHutch.CreateBus("host=localhost;username=user;password=password"));
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IDeliveggieService, DeliveggieService>();
 
             services.AddCors(options =>
