@@ -2,6 +2,7 @@ using DeliveggieAPI.Models;
 using DeliveggieAPI.Repository;
 using DeliveggieAPI.Services;
 using EasyNetQ;
+using EasyNetQ.Serialization.NewtonsoftJson;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -28,7 +29,7 @@ namespace DeliveggieAPI
             services.Configure<DeliveggieDBSettings>(Configuration.GetSection(nameof(DeliveggieDBSettings)));
             services.AddSingleton<IDeliveggieDBSettings>(sp => sp.GetRequiredService<IOptions<DeliveggieDBSettings>>().Value);
             services.AddSingleton<IMongoClient>(c => new MongoClient(Configuration.GetValue<string>("DeliveggieDBSettings:ConnectionString")));
-            //services.AddSingleton(RabbitHutch.CreateBus("host=localhost;username=user;password=password"));
+            services.AddSingleton(RabbitHutch.CreateBus("host=localhost;username=user;password=password"));
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IDeliveggieService, DeliveggieService>();
 
@@ -40,7 +41,7 @@ namespace DeliveggieAPI
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication1", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DeliveggieService", Version = "v1" });
             });
         }
 
@@ -51,7 +52,7 @@ namespace DeliveggieAPI
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplication1 v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DeliveggieService v1"));
             }
 
             //app.UseHttpsRedirection();

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { DayOfWeekPipe } from './pipe/day-of-week.pipe';
+import { EuroCurrencyPipe } from './pipe/euro-currency.pipe';
 
 //Routing settings.
 const appRoutes: Routes = [
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
     AppComponent,
     ProductListComponent,
     ProductDetailsComponent,
-    DayOfWeekPipe
+    DayOfWeekPipe,
+    EuroCurrencyPipe
   ],
   imports: [
     BrowserModule,
