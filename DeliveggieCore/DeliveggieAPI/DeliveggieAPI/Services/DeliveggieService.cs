@@ -1,47 +1,42 @@
 ﻿using DeliveggieAPI.Models;
-using MongoDB.Bson;
-using MongoDB.Driver;
+using DeliveggieAPI.Repository;
 using System.Collections.Generic;
 
 namespace DeliveggieAPI.Services
 {
     public class DeliveggieService : IDeliveggieService
     {
-        private readonly IMongoCollection<Product> _product;
+        private readonly IProductRepository _productRepository;
 
-        public DeliveggieService(IDeliveggieDBSettings deliveggieDBSettings,IMongoClient mongoClient )
+        public DeliveggieService(IProductRepository productRepository)
         {
-            var dbName = mongoClient.GetDatabase(deliveggieDBSettings.DatabaseName);
-           _product= dbName.GetCollection<Product>(deliveggieDBSettings.DeliveggieConnectionName);
+            _productRepository = productRepository;
         }
 
         public Product Create(Product product)
         {
-            product.Id = ObjectId.GenerateNewId().ToString();
-            product.ProductId = _product.Find(product => true).ToList().Count + 1;
-            _product.InsertOne(product);
-            return product;
+            return _productRepository.Create(product);
         }
 
         public List<Product> Get()
         {
-            return _product.Find(product => true).ToList();
+            return _productRepository.Get();
         }
 
         public Product Get(string id)
         {
-            return _product.Find(product =>product.Id==id).FirstOrDefault();
+            return _productRepository.Get(id);
         }
 
         public void Remove(string id)
         {
-            _product.DeleteOne(product => product.Id == id);
+            _productRepository.Remove(id);
         }
 
         public void Update(string id, Product product)
         {
-            _product.ReplaceOne(product => product.Id == id,product);
+            _productRepository.Update(id, product);
         }
-        
+
     }
 }

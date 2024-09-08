@@ -5,9 +5,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
-import { DayOfWeekPipe } from './day-of-week.pipe';
+import { DayOfWeekPipe } from './pipe/day-of-week.pipe';
 
-
+//Routing settings.
 const appRoutes: Routes = [
   { path: 'products', component: ProductListComponent },
   { path: 'product-details/:id', component: ProductDetailsComponent },
