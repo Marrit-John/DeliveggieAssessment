@@ -1,0 +1,16 @@
+<!-- src/app/app.component.html -->
+<div class="app-container">
+  <header class="app-header">
+    <h1>{{storeName}}</h1>
+  </header>
+  <main class="app-content">
+    <nav>
+      <a routerLink="/products" routerLinkActive="active">Product List</a>
+    </nav>
+    <!-- This is where the routed components (Product List or Product Details) will be rendered -->
+    <router-outlet></router-outlet>
+  </main>
+  <footer class="app-footer">
+    <p>&copy; 2024 {{storeName}}. All Rights Reserved.</p>
+  </footer>
+</div>

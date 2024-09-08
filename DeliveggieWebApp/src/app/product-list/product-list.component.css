@@ -1,0 +1,86 @@
+/* Main container for the product list */
+.product-list {
+    width: 100%;
+    margin: 20px 0;
+  }
+  
+  /* Style for each row (product or header) */
+  .product-row {
+    display: flex;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    align-items: center;
+  }
+  
+  /* Header row styling */
+  .product-row.header {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  /* Style for each column within the row */
+  .product-col {
+    flex: 1; /* Flexbox to distribute columns evenly */
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Specific width for the ID column to make it smaller */
+  .product-col.id {
+    flex: 0.5; /* ID column smaller */
+  }
+  
+  /* Flex-grow for specific columns */
+  .product-col.name {
+    flex: 1.5; /* Name column slightly larger */
+  }
+  
+  .product-col.reduction {
+    flex: 2; /* Price Reduction column larger */
+  }
+  
+  .product-col.actions {
+    flex: 1; /* Actions column width */
+  }
+  
+  /* Alternating row colors for better readability */
+  .product-row:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Unordered list inside the Price Reduction column */
+  .product-col ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .product-col ul li {
+    padding: 4px 0;
+  }
+  
+  /* Styling for the button in the Actions column */
+  button.btn {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  button.btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Loader message when there are no products */
+  p {
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+  }
+  

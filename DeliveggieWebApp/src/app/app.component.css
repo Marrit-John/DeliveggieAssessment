@@ -1,0 +1,54 @@
+/* src/app/app.component.css */
+
+nav {
+    background-color: #011124;
+    padding: 10px;
+  }
+  
+  nav a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+  }
+  
+  nav a.active {
+    background-color: rgb(32, 40, 75);
+  }
+  
+  nav a:hover {
+    background-color: rgb(119, 119, 119);
+  }
+  
+  .router-outlet {
+    margin: 20px;
+  }
+  /* General layout for the application */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  background-color:#020d1a;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+.app-content {
+  flex-grow: 1;
+  /* padding: 20px; */
+}
+
+.app-footer {
+  background-color: #020d1a;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}

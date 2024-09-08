@@ -1,0 +1,36 @@
+<div class="product-list">
+  <h2>Product List</h2>
+
+  <!-- Header row -->
+  <div class="product-row header">
+    <div class="product-col">Id</div>
+    <div class="product-col">Product Name</div>
+    <div class="product-col">Entry Date</div>
+    <div class="product-col">Price</div>
+    <!-- <div class="product-col">Price Reduction (Weekday %)</div> -->
+    <div class="product-col"></div>
+  </div>
+
+  <!-- Product rows -->
+  <div *ngFor="let product of products" class="product-row">
+    <div class="product-col">{{ product.productId }}</div>
+    <div class="product-col">{{ product.name }}</div>
+    <div class="product-col">{{ product.entryDate | date }}</div>
+    <div class="product-col">{{ product.price | currency: 'EUR':true  }}</div>
+    <!-- <div class="product-col">
+      <ul>
+        <li *ngFor="let reduction of product.priceReduction">
+          {{ reduction.dayOfWeek | dayOfWeek }}: {{ reduction.reduction * 100 }}%
+        </li>
+      </ul>
+    </div> -->
+    <div class="product-col">
+      <button class="btn btn-primary" (click)="viewProductDetails(product.id)">More Details</button>
+    </div>
+  </div>
+
+  <!-- No products message -->
+  <div *ngIf="!products || products.length === 0">
+    <p>No products available.</p>
+  </div>
+</div>

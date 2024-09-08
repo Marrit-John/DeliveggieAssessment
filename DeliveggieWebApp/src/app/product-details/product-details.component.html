@@ -1,0 +1,32 @@
+<div class="product-details-container" *ngIf="product">
+  <h2>{{ product.name }}</h2>
+
+  <!-- Product Entry Date -->
+  <p><strong>Entry Date:</strong> {{ product.entryDate | date }}</p>
+
+  <!-- Original Price -->
+  <p>
+    <strong>Original Price:</strong> 
+    <span class="original-price">{{ product.price | currency:'EUR':true }}</span>
+  </p>
+
+  <!-- Discounted Price (highlighted in red) -->
+  <p>
+    <strong>Discounted Price:</strong> 
+    <span class="discounted-price">{{ product.discountedPrice | currency:'EUR':true }}</span>
+  </p>
+
+  <!-- Price Reduction logic -->
+  <h3>Price Reductions by Day:</h3>
+  <ul>
+    <li *ngFor="let reduction of product.priceReduction">
+      <strong>{{ getDayOfWeek(reduction.dayOfWeek) }}:</strong> 
+      {{ reduction.reduction * 100 }}% off
+    </li>
+  </ul>
+</div>
+
+<!-- Show ,if the product is not found -->
+<div class="product-not-found" *ngIf="!product">
+  <p>Product not found.</p>
+</div>
