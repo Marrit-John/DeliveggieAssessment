@@ -7,13 +7,13 @@
   <!-- Original Price -->
   <p>
     <strong>Original Price:</strong> 
-    <span class="original-price">{{ product.price | currency:'EUR':true }}</span>
+    <span class="original-price">{{ product.price | euroCurrency  }}</span>
   </p>
 
   <!-- Discounted Price (highlighted in red) -->
   <p>
     <strong>Discounted Price:</strong> 
-    <span class="discounted-price">{{ product.discountedPrice | currency:'EUR':true }}</span>
+    <span class="discounted-price">{{ product.discountedPrice | euroCurrency }}</span>
   </p>
 
   <!-- Price Reduction logic -->

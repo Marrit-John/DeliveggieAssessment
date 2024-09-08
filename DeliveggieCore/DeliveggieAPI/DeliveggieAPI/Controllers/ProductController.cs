@@ -39,7 +39,7 @@ namespace DeliveggieAPI.Controllers
             if (product.PriceReduction != null)
             {
                 var discount = product.PriceReduction.FirstOrDefault(r => r.DayOfWeek == (int)today)?.Reduction ?? 0;
-                var discountedPrice = (decimal)product.Price * (1 - discount);
+                product.DiscountedPrice = (decimal)product.Price * (1 - discount);
             }
             return product;
 

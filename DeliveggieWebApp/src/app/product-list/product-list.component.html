@@ -16,7 +16,7 @@
     <div class="product-col">{{ product.productId }}</div>
     <div class="product-col">{{ product.name }}</div>
     <div class="product-col">{{ product.entryDate | date }}</div>
-    <div class="product-col">{{ product.price | currency: 'EUR':true  }}</div>
+    <div class="product-col">{{ product.price | euroCurrency }}</div>
     <!-- <div class="product-col">
       <ul>
         <li *ngFor="let reduction of product.priceReduction">
